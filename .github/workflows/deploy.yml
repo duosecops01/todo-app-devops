@@ -62,15 +62,20 @@ jobs:
         --region us-east-1
 
 
-    - name: Deploy to Kubernetes
+    - name: Update Kubernetes Manifest
       run: |
 
-        kubectl set image deployment/todo-app \
-        todo-app=103731055876.dkr.ecr.us-east-1.amazonaws.com/duosecops:${{ github.sha }} \
-        -n todo-app
+        sed -i "s|IMAGE_PLACEHOLDER|103731055876.dkr.ecr.us-east-1.amazonaws.com/duosecops:${{ github.sha }}|g" k8s/deployment.yaml
 
 
-    - name: Verify Deployment
+    - name: Deploy Kubernetes Resources
       run: |
 
-        kubectl rollout status deployment/todo-app -n todo-app
+        kubectl apply -f k8s/ -n todo-app
+
+    - name: Verify Deployment Rollout
+      run: |
+
+        kubectl rollout status deployment/todo-app \
+        -n todo-app \
+        --timeout=120s
