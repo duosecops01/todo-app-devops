@@ -1,0 +1,6 @@
+.git
+.github
+actions-runner
+database
+README.md
+*.log
