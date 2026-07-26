@@ -3,6 +3,7 @@
 actions-runner/
 .idea/
 
+k8s/secret.yaml
 # Logs
 *.log
 
