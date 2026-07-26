@@ -70,6 +70,15 @@ jobs:
         docker tag duosecops:latest \
         103731055876.dkr.ecr.us-east-1.amazonaws.com/duosecops:${{ github.sha }}
 
+    - name: Run Trivy Image Scan
+      uses: aquasecurity/trivy-action@0.30.0
+      with:
+        image-ref: 103731055876.dkr.ecr.us-east-1.amazonaws.com/duosecops:${{ github.sha }}
+        format: table
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'HIGH,CRITICAL'
 
     - name: Push Image to ECR
       run: |
