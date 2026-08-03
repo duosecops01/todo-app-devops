@@ -5,10 +5,10 @@ error_log("HOST: ".getenv('DB_HOST'));
 error_log("USER: ".getenv('DB_USER'));
 error_log("NAME: ".getenv('DB_NAME'));
 
-define('DB_HOST', getenv('DB_HOST'));
-define('DB_USER', getenv('DB_USER'));
-define('DB_PASS', getenv('DB_PASS'));
-define('DB_NAME', getenv('DB_NAME'));
+define('DB_HOST', $_SERVER['DB_HOST'] ?? getenv('DB_HOST'));
+define('DB_USER', $_SERVER['DB_USER'] ?? getenv('DB_USER'));
+define('DB_PASS', $_SERVER['DB_PASS'] ?? getenv('DB_PASS'));
+define('DB_NAME', $_SERVER['DB_NAME'] ?? getenv('DB_NAME'));
 
 // ===== TEMPORARY DEBUG =====
 
