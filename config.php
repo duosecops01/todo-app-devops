@@ -30,6 +30,9 @@ function getDBConnection() {
     static $conn = null;
 
     if ($conn === null) {
+	error_log("CONFIG HOST = " . DB_HOST);
+	error_log("CONFIG USER = " . DB_USER);
+	error_log("CONFIG NAME = " . DB_NAME);
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if (!$conn) {
