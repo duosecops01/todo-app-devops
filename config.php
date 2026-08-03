@@ -1,6 +1,10 @@
 <?php
 // Database configuration
 
+error_log("HOST: ".getenv('DB_HOST'));
+error_log("USER: ".getenv('DB_USER'));
+error_log("NAME: ".getenv('DB_NAME'));
+
 define('DB_HOST', getenv('DB_HOST'));
 define('DB_USER', getenv('DB_USER'));
 define('DB_PASS', getenv('DB_PASS'));
