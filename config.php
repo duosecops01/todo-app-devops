@@ -6,12 +6,7 @@ define('DB_PASS', $_ENV['DB_PASS'] ?? $_SERVER['DB_PASS'] ?? getenv('DB_PASS'));
 define('DB_NAME', $_ENV['DB_NAME'] ?? $_SERVER['DB_NAME'] ?? getenv('DB_NAME'));
 
 // ===== TEMPORARY DEBUG =====
-echo "<pre>";
-echo "DB_HOST: "; var_dump(DB_HOST);
-echo "DB_USER: "; var_dump(DB_USER);
-echo "DB_PASS: "; var_dump(DB_PASS);
-echo "DB_NAME: "; var_dump(DB_NAME);
-exit;
+
 // ===== END DEBUG =====
 
 // Session configuration
