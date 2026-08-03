@@ -1,10 +1,6 @@
 <?php
 // Database configuration
 
-error_log("HOST: ".getenv('DB_HOST'));
-error_log("USER: ".getenv('DB_USER'));
-error_log("NAME: ".getenv('DB_NAME'));
-
 define('DB_HOST', $_SERVER['DB_HOST'] ?? getenv('DB_HOST'));
 define('DB_USER', $_SERVER['DB_USER'] ?? getenv('DB_USER'));
 define('DB_PASS', $_SERVER['DB_PASS'] ?? getenv('DB_PASS'));
@@ -30,11 +26,7 @@ function getDBConnection() {
     static $conn = null;
 
     if ($conn === null) {
-	error_log("=== DATABASE DEBUG ===");
-	error_log("DB_HOST constant: " . var_export(DB_HOST, true));
-	error_log("DB_USER constant: " . var_export(DB_USER, true));
-	error_log("DB_NAME constant: " . var_export(DB_NAME, true));
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
